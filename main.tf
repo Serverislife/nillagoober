@@ -154,7 +154,7 @@ storage_image_reference {
 }
 
 os_profile {
-        computer_name  = "nillagoob_prime"
+        computer_name  = "nillagoob"
         admin_username = "azroot"
     
 }
@@ -162,7 +162,7 @@ os_profile {
 os_profile_linux_config {
         disable_password_authentication = true
 ssh_keys {
-            path     = "/home/azureuser/.ssh/authorized_keys"
+            path     = "/home/azroot/.ssh/authorized_keys"
             key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9L8FqM+j30y7NGrY05/V8c4e9WfVFVrWn3WtLTxfZ5vgAFVm8OgnsEWMQ3gZgVQDUpGqwIV50nth3WL2LQR6/LGZJwdpu2Nr8g03Byrid/4G1D2uQqSH7AJqmMtnVukYtha5qUvyjYYULeHlsUIY92apRyoc9chY/6mWMNu+uNF8VXxLSO5ujBDjwIE0D3RXx81/TtfJiefgI3k9B0tWAjcXJPL5SgXWE1xi/PJHFRuB7mJShfLE+ZJOxF8WMJwNkUJv5BOOGayXUuxuC/+N5Ggy93EfQN7EBFuVwSz9A353CGFz733NklDpbrsQSl98FXH99slEupVT03xf3Jth b0s00dg@yeeticusprime"
         
 }
