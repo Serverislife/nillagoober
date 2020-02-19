@@ -40,7 +40,7 @@ resource "azurerm_subnet" "nillagoober_tf_subnet" {
   name                 = "nillagoober_subnet"
   resource_group_name  = azurerm_resource_group.nillagoober_tf_rg.name
   virtual_network_name = azurerm_virtual_network.nillagoober_virt_net.name
-  address_prefix        = "10.0.1.0/24"
+  address_prefix       = "10.0.1.0/24"
 }
 
 # Create public IPs
@@ -52,7 +52,6 @@ resource "azurerm_public_ip" "nillagoober_tf_pub_ip" {
 
   tags = {
     environment = "Nillagoober Dev"    
-  
   }
 }
 
@@ -63,16 +62,15 @@ resource "azurerm_network_security_group" "nillagoober_tf_nsg" {
   resource_group_name = azurerm_resource_group.nillagoober_tf_rg.name
     
   security_rule {
-    name                      = "SSH"
-    priority                  = 1001
-    direction                 = "Inbound"
-    access                    = "Allow"
-    protocol                  = "Tcp"
-    source_port_range         = "*"
-    destination_port_range    = "22"
+    name                       = "SSH"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"    
-  
   }
 
   tags = {
@@ -96,7 +94,6 @@ resource "azurerm_network_interface" "nillagoober_tf_nic" {
 
   tags = {
     environment = "Nillagoober Dev"    
-  
   }
 }
 
@@ -128,7 +125,7 @@ resource "azurerm_virtual_machine" "nillagoober_vm" {
   location              = "westus"
   resource_group_name   = azurerm_resource_group.nillagoober_tf_rg.name
   network_interface_ids = [azurerm_network_interface.nillagoober_tf_nic.id]
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_B1s"
 
   storage_os_disk {
     name              = "OsDisk1"
