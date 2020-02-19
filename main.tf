@@ -1,3 +1,12 @@
+/* Specifying a variable
+* variable "<var_name>" {
+*   default = "<value>"
+* }
+* Call it like ${var.<var_name>}
+* Substantiate it with -var '<var_name>=<value>' or from terraform.tfvars to assign variables from a file
+* Specifying a variable in a .tf file with no default and without passing anything to apply will result in it asking you for values
+*/
+
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   subscription_id = "6fbc4b5d-b5eb-42c1-974d-a5d2bc5d64fd"
@@ -144,5 +153,8 @@ resource "azurerm_virtual_machine" "nillagoober_vm" {
       key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9L8FqM+j30y7NGrY05/V8c4e9WfVFVrWn3WtLTxfZ5vgAFVm8OgnsEWMQ3gZgVQDUpGqwIV50nth3WL2LQR6/LGZJwdpu2Nr8g03Byrid/4G1D2uQqSH7AJqmMtnVukYtha5qUvyjYYULeHlsUIY92apRyoc9chY/6mWMNu+uNF8VXxLSO5ujBDjwIE0D3RXx81/TtfJiefgI3k9B0tWAjcXJPL5SgXWE1xi/PJHFRuB7mJShfLE+ZJOxF8WMJwNkUJv5BOOGayXUuxuC/+N5Ggy93EfQN7EBFuVwSz9A353CGFz733NklDpbrsQSl98FXH99slEupVT03xf3Jth b0s00dg@yeeticusprime"
     }
   }
+}
 
+output "ip" {
+  value = azurerm_public_ip.nillagoober_tf_pub_ip.ip_address
 }
