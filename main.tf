@@ -45,13 +45,14 @@ resource "azurerm_subnet" "nillagoober_tf_subnet" {
 
 # Create public IPs
 resource "azurerm_public_ip" "nillagoober_tf_pub_ip" {
-  name                         = "nillagoober_public_ip"
-  location                     = "westus"
-  resource_group_name          = azurerm_resource_group.nillagoober_tf_rg.name
-  allocation_method            = "Dynamic"
+  name                = "nillagoober_public_ip"
+  location            = "westus"
+  resource_group_name = azurerm_resource_group.nillagoober_tf_rg.name
+  allocation_method   = "Dynamic"
 
   tags = {
     environment = "Nillagoober Dev"    
+  
   }
 }
 
@@ -62,15 +63,16 @@ resource "azurerm_network_security_group" "nillagoober_tf_nsg" {
   resource_group_name = azurerm_resource_group.nillagoober_tf_rg.name
     
   security_rule {
-    name                       = "SSH"
-    priority                   = 1001
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "22"
+    name                      = "SSH"
+    priority                  = 1001
+    direction                 = "Inbound"
+    access                    = "Allow"
+    protocol                  = "Tcp"
+    source_port_range         = "*"
+    destination_port_range    = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"    
+  
   }
 
   tags = {
@@ -90,10 +92,11 @@ resource "azurerm_network_interface" "nillagoober_tf_nic" {
     subnet_id                     = azurerm_subnet.nillagoober_tf_subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.nillagoober_tf_pub_ip.id
-}
+  }
 
   tags = {
     environment = "Nillagoober Dev"    
+  
   }
 }
 
@@ -108,11 +111,11 @@ resource "random_id" "randomId" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "nillagoober_storage_acc" {
-  name                        = "diag${random_id.randomId.hex}"
-  resource_group_name         = azurerm_resource_group.nillagoober_tf_rg.name
-  location                    = "westus"
-  account_tier                = "Standard"
-  account_replication_type    = "LRS"
+  name                     = "diag${random_id.randomId.hex}"
+  resource_group_name      = azurerm_resource_group.nillagoober_tf_rg.name
+  location                 = "westus"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 
   tags = {
     environment = "Nillagoober Dev"    
@@ -143,18 +146,14 @@ resource "azurerm_virtual_machine" "nillagoober_vm" {
 
   os_profile {
     computer_name  = "nillagoob"
-    admin_username = "azroot"    
-}
+    admin_username = "azroot"
+  }
 
   os_profile_linux_config {
     disable_password_authentication = true
     ssh_keys {
       path     = "/home/azroot/.ssh/authorized_keys"
-      key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9L8FqM+j30y7NGrY05/V8c4e9WfVFVrWn3WtLTxfZ5vgAFVm8OgnsEWMQ3gZgVQDUpGqwIV50nth3WL2LQR6/LGZJwdpu2Nr8g03Byrid/4G1D2uQqSH7AJqmMtnVukYtha5qUvyjYYULeHlsUIY92apRyoc9chY/6mWMNu+uNF8VXxLSO5ujBDjwIE0D3RXx81/TtfJiefgI3k9B0tWAjcXJPL5SgXWE1xi/PJHFRuB7mJShfLE+ZJOxF8WMJwNkUJv5BOOGayXUuxuC/+N5Ggy93EfQN7EBFuVwSz9A353CGFz733NklDpbrsQSl98FXH99slEupVT03xf3Jth b0s00dg@yeeticusprime"
+      key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDg9L8FqM+j30y7NGrY05/V8c4e9WfVFVrWn3WtLTxfZ5vgAFVm8OgnsEWMQ3gZgVQDUpGqwIV50nth3WL2LQR6/LGZJwdpu2Nr8g03Byrid/4G1D2uQqSH7AJqmMtnVukYtha5qUvyjYYULeHlsUIY92apRyoc9chY/6mWMNu+uNF8VXxLSO5ujBDjwIE0D3RXx81/TtfJiefgI3k9B0tWAjcXJPL5SgXWE1xi/PJHFRuB7mJShfLE+ZJOxF8WMJwNkUJv5BOOGayXUuxuC/+N5Ggy93EfQN7EBFuVwSz9A353CGFz733NklDpbrsQSl98FXH99slEupVT03xf3Jth b0s00dg@yeeticusprime"    
     }
   }
-}
-
-output "ip" {
-  value = azurerm_public_ip.nillagoober_tf_pub_ip.ip_address
 }
