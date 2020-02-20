@@ -40,7 +40,7 @@ resource "azurerm_subnet" "nillagoober_tf_subnet" {
   name                 = "nillagoober_subnet"
   resource_group_name  = azurerm_resource_group.nillagoober_tf_rg.name
   virtual_network_name = azurerm_virtual_network.nillagoober_virt_net.name
-  address_prefix       = "10.0.1.0/24"
+  address_prefix        = "10.0.1.0/24"
 }
 
 # Create public IPs
@@ -62,13 +62,13 @@ resource "azurerm_network_security_group" "nillagoober_tf_nsg" {
   resource_group_name = azurerm_resource_group.nillagoober_tf_rg.name
     
   security_rule {
-    name                       = "SSH"
-    priority                   = 1001
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "22"
+    name                      = "SSH"
+    priority                  = 1001
+    direction                 = "Inbound"
+    access                    = "Allow"
+    protocol                  = "Tcp"
+    source_port_range         = "*"
+    destination_port_range    = "22"
     source_address_prefix      = "*"
     destination_address_prefix = "*"    
   }
