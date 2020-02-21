@@ -65,7 +65,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// If the message is "pong" reply with "Ping!"
-	if m.Content == "@Dumbass bitch becky" {
+	if m.Content == "@Dumbass bitch Becky" {
 		s.ChannelMessageSend(m.ChannelID, "Get the h*ck in here :ohloveme:")
 	}
 }
