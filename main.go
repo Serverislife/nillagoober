@@ -10,38 +10,38 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-// Variables used for command line parameters
+// Needed for cli action
 var (
 	Token string
 )
 
 func init() {
 
-	flag.StringVar(&Token, "t", "", "Bot Token")
+	flag.StringVar(&Token, "t", "", "Bot token")
 	flag.Parse()
 }
 
 func main() {
 
-	// Create a new Discord session using the provided bot token.
+	// Create a new Discord session
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
-		fmt.Println("error creating Discord session,", err)
+		fmt.Println("Could not create discord session:", err)
 		return
 	}
 
-	// Register the messageCreate func as a callback for MessageCreate events.
+	// Registers messageCreate actions as callbacks
 	dg.AddHandler(messageCreate)
 
-	// Open a websocket connection to Discord and begin listening.
+	// Opens a connection to discord and listens
 	err = dg.Open()
 	if err != nil {
-		fmt.Println("error opening connection,", err)
+		fmt.Println("Could not open a web socket:", err)
 		return
 	}
 
 	// Wait here until CTRL-C or other term signal is received.
-	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
+	fmt.Println("The bot is running.  Press CTRL-C to exit.")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc
@@ -60,12 +60,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 	// If the message is "ping" reply with "Pong!"
-	if m.Content == "ping" {
-		s.ChannelMessageSend(m.ChannelID, "Pong!")
+	if m.Content == "jack" {
+		s.ChannelMessageSend(m.ChannelID, ":clowner:")
 	}
 
 	// If the message is "pong" reply with "Ping!"
-	if m.Content == "pong" {
-		s.ChannelMessageSend(m.ChannelID, "Ping!")
+	if m.Content == "@Dumbass bitch becky" {
+		s.ChannelMessageSend(m.ChannelID, "Get the h*ck in here :ohloveme:")
 	}
 }
