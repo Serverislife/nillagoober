@@ -10,7 +10,7 @@ All commands in this list are to be preceeded by `!!`. At some point I'd like to
 
 - `help` - Prints a message directing a user to this GitHub project for command references.
 - `pepega` - Prints `pepega clap` to a Discord channel. Good for Chiddy.
-- `viewers` - This command interacts with the Twitch API to gather the amount of current viewers watching the stream, and sends the number to a Discord channel.
+- `viewers` - This command interacts with the Twitch API to gather the amount of current viewers watching the stream, and sends the number to a Discord channel. **Note**: This command will crash the bot if the stream isn't running. Working on better handling of the Twitch HTTP response.
 
 Lots more coming soon.
 
