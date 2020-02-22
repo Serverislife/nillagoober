@@ -1,33 +1,38 @@
-# Nillagoober_tv
+# NillaGoober
 
-`nillagoober_tv` is a Python project running in Azure that serves as [nillaboober](https://twitch.tv/nillagoober)'s personal hype-man. It's purpose is to post to social media when `nillagoober` goes live on Twitch and generally promote the streamer at least once a day. The future of this project is to parameterize the name of the streamer to promote and monitor, removing hard-coded Twitch names.
+`nillagoober_tv` is a [Go](https://golang.org/) project running in Azure that serves as [nillagoober](https://twitch.tv/nillagoober)'s personal hype-man. It's purpose is to post to social media when `nillagoober` goes live on Twitch and generally promote the streamer at least once a day. It currently is being purposed as a bot on Discord, but will branch to also use social media as a platform for promotion in the near future.
 
 ## Getting Started
+
+### Discord bot command list
+
+All commands in this list are to be preceeded by `!!`. At some point I'd like to have this to be paramaterized so it can be customized.
+
+- `help` - Prints a message directing a user to this GitHub project for command references.
+- `pepega` - Prints `pepega clap` to a Discord channel. Good for Chiddy.
+- `viewers` - This command interacts with the Twitch API to gather the amount of current viewers watching the stream, and sends the number to a Discord channel.
+
+Lots more coming soon.
 
 ### Prerequisites
 
 - Terraform is installed
 - Azure cloud shell is installed
 - An Azure account (you need to put a subscription ID from your account in `main.tf`)
-
-To get started promoting a Twitch streamer:
-
-- Clone this repository with `git clone <url>`
-- Use Terraform to provision the infrastructure (currently limited to Azure, free though)
-  - Initialize the Terraform project `terraform init`. This command will create a `.terraform` directory using considerations from `main.tf`. This directory is included in the `.gitignore`.
-  - Generate a plan based on the contents of `main.tf`. Simply run `terraform plan`. **Optional**: run `terraform apply` with the `-out` flag to save the plan to a file.
-  - To build the server using the plan created in the last step, run `terraform apply` (use the `-plan` flag if you saved the plan to a file).
+- `Go` is installed so that you can compile an executable
 
 ## Useful links
 
-- [Terraform documentation w/ examples](https://learn.hashicorp.com/terraform?track=azure#azure)
 - [Azure](https://azure.microsoft.com/en-us/)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Terraform documentation w/ examples](https://learn.hashicorp.com/terraform?track=azure#azure)
+- [How to download Go](https://golang.org/dl/)
+- [Nillagoober's Twitch](https://twitch.tv/nillagoober)
 
 ## TODO
 
-- Write out the Python project
-- Update README with Python information
+- Write more Twitch interactive functions
+- Update README with Go information
 - Parameterize input in `main.tf`
 
 ## Contact
