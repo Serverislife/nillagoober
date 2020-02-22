@@ -52,5 +52,5 @@ func twitch() {
 }
 
 func main() {
-	discord()
+	twitch()
 }
