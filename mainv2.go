@@ -46,5 +46,7 @@ func main() {
 		fmt.Printf("Error: failed decoding body: %v", err)
 	}
 
-	fmt.Println("viewer count = ", response.Data[0].ViewerCount)
+	fmt.Println("Stream began at: ", response.Data[0].StartedAt)
+	fmt.Println("Stream title: ", response.Data[0].Title)
+	fmt.Println("Total viewers: ", response.Data[0].ViewerCount)
 }
