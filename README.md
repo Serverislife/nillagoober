@@ -1,4 +1,4 @@
-# NillaGoober
+# NillaGoober ![build](https://github.com/Serverislife/nillagoober/workflows/Go/badge.svg)
 
 `nillagoober_tv` is a [Go](https://golang.org/) project running in Azure that serves as [nillagoober](https://twitch.tv/nillagoober)'s personal hype-man. It's purpose is to post to social media when `nillagoober` goes live on Twitch and generally promote the streamer at least once a day. It currently is being purposed as a bot on Discord, but will branch to also use social media as a platform for promotion in the near future.
 
